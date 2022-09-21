@@ -191,56 +191,65 @@
               <h5 class="modal-title" id="registerModalLabel"><i class="fa-solid fa-user-pen me-2"></i>- S'inscrire</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="modal-body" id="registerForm">
+            <form class="modal-body" onsubmit="registerNewUser()" id="registerForm">
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col" id="firstNameSectionRegister">
                         <label for="firstName" class="form-label">Prénom :</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="John">
+                        <input type="text" class="form-control" id="firstNameRegister" placeholder="John">
                       </div>
-                      <div class="col">
+                      <div class="col" id="lastNameSectionRegister">
                         <label for="lastName" class="form-label">Nom :</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Doe">
+                        <input type="text" class="form-control" id="lastNameRegister" placeholder="Doe">
                       </div>                    
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" id="pseudoSectionRegister">
                     <label for="lastName" class="form-label">Pseudo :</label>
-                    <input type="text" class="form-control" id="pseudo">
+                    <input type="text" class="form-control" id="pseudoRegister" required>
                 </div>
                 <div class="mb-3">
-                    <p class=""> Vous êtes un(e) :</p>
+                    <p> Vous êtes un(e) :</p>
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">Homme</label>
+                                <input class="form-check-input" value="H" type="radio" name="GenderRadio" id="maleRegister" checked>
+                                <label class="form-check-label" for="maleRegister">Homme</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">Femme</label>
+                                <input class="form-check-input" value="F" type="radio" name="GenderRadio" id="femelleRegister">
+                                <label class="form-check-label" for="femelleRegister">Femme</label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInput" class="form-label">Adresse e-mail :</label>
-                    <input type="email" class="form-control" id="exampleInput" aria-describedby="emailHelp" placeholder="abcdefg@xyz.fr">
+                <div class="mb-3" id="mailSectionRegister">
+                    <label for="mailInputRegister" class="form-label">Adresse e-mail :</label>
+                    <input type="email" class="form-control" id="mailInputRegister" aria-describedby="emailHelp" placeholder="abcdefg@xyz.fr" required>
                     <div id="emailHelp" class="form-text">Nous ne partagerons jamais vos identifiants.</div>
                 </div>
                 <div class="mb-3">
-                    <label for="passwordInput" class="form-label">Mot de passe :</label>
-                    <input type="password" class="form-control" id="passwordInput" placeholder="*********">
+                    <label for="passwordInputRegister" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="passwordInputRegister" placeholder="*********" required>
                 </div>
                 <div class="mb-3">
                     <label for="confirmPasswordInput" class="form-label">Confirmation votre mot de passe :</label>
-                    <input type="password" class="form-control" id="confirmPasswordInput" placeholder="*********">
+                    <input type="password" class="form-control" id="confirmPasswordInputRegister" placeholder="*********" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ageInput" class="form-label">Votre âge :</label>
+                    <input type="number" class="form-control" id="ageInputRegister" placeholder="22" min="1" max="135">
+                </div>
+                <div class="mb-4">
+                    <label for="cityInput" class="form-label">Votre ville :</label>
+                    <input type="text" class="form-control" id="cityInputRegister" placeholder="Lille">
+                </div>
+
+                <div class="d-flex flex-row justify-content-end mb-2">
+                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-primary">Confirmer</button>
                 </div>
             </form>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-              <button type="button" class="btn btn-primary">Confirmer</button>
-            </div>
           </div>
         </div>
     </div>
@@ -267,10 +276,11 @@
             </div>
         </div>
         <div class="row text-center">
-            <p class="fs-6 text-white">© Discu'ton. Tous droits réservés</p>
+            <p class="fs-6 text-white">© Discu'ton. Tous droits réservés.</p>
         </div>
     </footer>
     <script src="main.js"></script>
+    <script src="index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
