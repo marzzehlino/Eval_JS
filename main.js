@@ -1,50 +1,57 @@
-const connectBtn = document.getElementById("connectBtn");
-const registerBtn = document.getElementById("registerBtn");
-const newSujet = document.getElementById("newSujet");
-const createSujet = document.getElementById("createSujet");
+function pseudoAlreadyRegister(pseudo){
+    let users = JSON.parse(localStorage.users)
 
-function connectForm(){
-    $("#connectModal").modal('show');
+    let resultFind = users.find( user => user.pseudo === pseudo);
+    return typeof resultFind === 'object'; 
 }
 
-connectBtn.addEventListener("click", connectForm)
+function mailAlreadyRegister(mail) {
+    let users = JSON.parse(localStorage.users)
 
-function registerForm(){
-    $("#registerModal").modal('show');
+    let resultFind = users.find( user => user.mail === mail);
+    return typeof resultFind === 'object'; 
 }
 
-registerBtn.addEventListener("click", registerForm)
+function createNewUser(data){
+    let users = JSON.parse(localStorage.users)
 
-function drawModal() {
-    $("#staticBackdrop").modal('show');
+    const user = {}
+
+    user.prenom = data.prenom;
+    user.nom = data.nom;
+    user.pseudo = data.pseudo;
+    user.sexe = data.sexe;
+    user.mail = data.mail;
+    user.password = data.password;
+    user.age = data.age;
+    user.city = data.city;
+
+    users.push(user)
+
+    localStorage.users = JSON.stringify(users);
 }
-
-newSujet.addEventListener("click", drawModal);
-
-function createNewSujet() {
-    var sujet = {};
-    sujet.titre;
-    sujet.contenu;
-
-    var titreInput = document.getElementById("titreInput");
-    var contenuInput = document.getElementById("contenuInput");
-
-    sujet.titre = titreInput.value;
-    sujet.contenu = contenuInput.value
-    var key = sujets.lenght || 0
-
-    var sujets = JSON.parse(localStorage.sujets);
-    Object.assign(sujets[key + 1], sujet)
-    console.log(sujets)
-}
-
-createSujet.addEventListener("click", createNewSujet);
 
 window.addEventListener('load', (event) => {
-    sujets = {};
+    let users = [];
+    let isConnected;
+
+    let sujets = {};
     if (localStorage.sujets != null) {
-        sujets = localStorage.sujets;
+        sujets = JSON.parse(localStorage.sujets);
     } else {
         localStorage.sujets = JSON.stringify(sujets);
+    }
+
+    if (localStorage.isConnected != null) {
+        isConnected = localStorage.isConnected;
+    } else {
+        isConnected = false;
+        localStorage.isConnected = isConnected;
+    }
+
+    if (localStorage.users != null) {
+        users = JSON.parse(localStorage.users);
+    } else {
+        localStorage.users = JSON.stringify(users);
     }
 });
