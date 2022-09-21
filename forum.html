@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/988ff1373e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+                <div class="col-6">
+                    <div class="d-flex flex-row align-items-center">
+                        <a class="navbar-brand" href="#">
+                            <img src="img/logo.png"  class="me-2" width="32" height="32"/>
+                            Discu'ton
+                        </a>
+                        <ul class="navbar-nav text-white">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">A propos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="forum.html">Forum</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex justify-content-end float-end text-white">
+                        <a href="#" class="me-2 text-white"><i class="fa-solid fa-user"></i> Se connecter</a>
+                        <a href="#" class="text-white"><i class="fa-solid fa-user-pen"></i> S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid bg-discuton-primary p-0">
+        <div class="row p-2">
+            <div class="col-6">
+                <p class="fs-4 fw-bold">Forum</p>
+            </div>
+            <div class="col-6">
+                <div class="d-flex flex-row justify-content-end">
+                    <button type="button" class="btn btn-primary" id="newSujet"><i class="fa-solid fa-file-circle-plus me-2"></i>Nouveau sujet</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Créer un nouveau sujet</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="modal-body">
+                <div class="mb-4">
+                    <label for="titreInput" class="form-label">Titre :</label>
+                    <input type="text" class="form-control" id="titreInput">
+                </div>
+                <div class="mb-4">
+                    <label for="contenuInput" class="form-label">Contenu :</label>
+                    <textarea class="form-control" id="contenuInput"></textarea>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="createSujet">Compris</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark">
+        <div class="row">
+            <div class="col-6 text-white p-4">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <p class="fs-4 fw-bold mb-2 w-50">LIENS ANNEXES</p>
+                    <ul class="fs-5 ps-0 w-50 mb-0">
+                        <li><a href="#" class="text-white">Acceuil</a></li>
+                        <li><a href="#" class="text-white">A propos</a></li>
+                        <li><a href="#" class="text-white">Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6 text-white p-4">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <p class="fs-4 fw-bold mb-2 w-50">NOUS CONTACTER</p>
+                    <p class="fs-5 w-50 mb-0">150 Avenue John Doe</p>
+                    <p class="fs-5 w-50 mb-0">59000 Lille</p>
+                    <p class="fs-5 w-50 mb-0"><i class="fa-solid fa-phone me-2"></i>0320313233</p>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <p class="fs-6 text-white">© Discu'ton. Tous droits réservés</p>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
