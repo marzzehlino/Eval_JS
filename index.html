@@ -35,8 +35,8 @@
                 </div>
                 <div class="col-6">
                     <div class="d-flex justify-content-end float-end text-white">
-                        <a href="#" class="me-2 text-white"><i class="fa-solid fa-user"></i> Se connecter</a>
-                        <a href="#" class="text-white"><i class="fa-solid fa-user-pen"></i> S'inscrire</a>
+                        <a href="#" class="me-2 text-white" id="connectBtn"><i class="fa-solid fa-user"></i> Se connecter</a>
+                        <a href="#" class="text-white" id="registerBtn"><i class="fa-solid fa-user-pen"></i> S'inscrire</a>
                     </div>
                 </div>
             </div>
@@ -155,6 +155,93 @@
                 </div>
             </div>
             <button type="button" class="btn btn-primary rounded-4 fs-5 px-3 py-2">Voir les sujets du forum</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="connectModal" tabindex="-1" aria-labelledby="connectModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="connectModalLabel">Se connecter</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="modal-body" id="connectForm">
+                <div class="mb-4">
+                    <label for="exampleInput" class="form-label">Adresse e-mail :</label>
+                    <input type="email" class="form-control" id="exampleInput" aria-describedby="emailHelp" placeholder="abcdefg@xyz.fr">
+                    <div id="emailHelp" class="form-text">Nous ne partagerons jamais vos identifiants.</div>                    
+                </div>
+                <div class="mb-4">
+                    <label for="passwordInput" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="passwordInput">                    
+                </div>
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-primary">Confirmer</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel"><i class="fa-solid fa-user-pen me-2"></i>- S'inscrire</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="modal-body" id="registerForm">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="firstName" class="form-label">Prénom :</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="John">
+                      </div>
+                      <div class="col">
+                        <label for="lastName" class="form-label">Nom :</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Doe">
+                      </div>                    
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Pseudo :</label>
+                    <input type="text" class="form-control" id="pseudo">
+                </div>
+                <div class="mb-3">
+                    <p class=""> Vous êtes un(e) :</p>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">Homme</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">Femme</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Adresse e-mail :</label>
+                    <input type="email" class="form-control" id="exampleInput" aria-describedby="emailHelp" placeholder="abcdefg@xyz.fr">
+                    <div id="emailHelp" class="form-text">Nous ne partagerons jamais vos identifiants.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="passwordInput" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="passwordInput" placeholder="*********">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPasswordInput" class="form-label">Confirmation votre mot de passe :</label>
+                    <input type="password" class="form-control" id="confirmPasswordInput" placeholder="*********">
+                </div>
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-primary">Confirmer</button>
+            </div>
+          </div>
         </div>
     </div>
 

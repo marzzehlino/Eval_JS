@@ -1,5 +1,19 @@
-const newSujet = document.getElementById("newSujet")
-const createSujet = document.getElementById("createSujet")
+const connectBtn = document.getElementById("connectBtn");
+const registerBtn = document.getElementById("registerBtn");
+const newSujet = document.getElementById("newSujet");
+const createSujet = document.getElementById("createSujet");
+
+function connectForm(){
+    $("#connectModal").modal('show');
+}
+
+connectBtn.addEventListener("click", connectForm)
+
+function registerForm(){
+    $("#registerModal").modal('show');
+}
+
+registerBtn.addEventListener("click", registerForm)
 
 function drawModal() {
     $("#staticBackdrop").modal('show');
