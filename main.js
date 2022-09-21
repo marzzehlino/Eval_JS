@@ -12,6 +12,14 @@ function mailAlreadyRegister(mail) {
     return typeof resultFind === 'object'; 
 }
 
+function retrieveUser(identifiant){
+    let users = JSON.parse(localStorage.users)
+
+    let resultFind = users.find( user => (user.mail === identifiant || user.pseudo === identifiant));
+
+    return resultFind;
+}
+
 function createNewUser(data){
     let users = JSON.parse(localStorage.users)
 
@@ -29,29 +37,31 @@ function createNewUser(data){
     users.push(user)
 
     localStorage.users = JSON.stringify(users);
+    document.location.reload();
+}
+
+function userConnected(){
+    return sessionStorage.user != null;
 }
 
 window.addEventListener('load', (event) => {
     let users = [];
-    let isConnected;
-
     let sujets = {};
+
+
     if (localStorage.sujets != null) {
         sujets = JSON.parse(localStorage.sujets);
     } else {
         localStorage.sujets = JSON.stringify(sujets);
     }
 
-    if (localStorage.isConnected != null) {
-        isConnected = localStorage.isConnected;
-    } else {
-        isConnected = false;
-        localStorage.isConnected = isConnected;
-    }
-
     if (localStorage.users != null) {
         users = JSON.parse(localStorage.users);
     } else {
         localStorage.users = JSON.stringify(users);
+    }
+
+    if (userConnected()) {
+        buildSpaceConnected()
     }
 });
