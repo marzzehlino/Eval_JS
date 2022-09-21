@@ -3,8 +3,6 @@ const registerBtn = document.getElementById("registerBtn");
 const registerFormSend = document.getElementById("registerSendForm");
 const sendConnectForm = document.getElementById("sendConnectForm");
 
-const userFlex = document.getElementById("userForm")
-
 let buildMessages = [];
 
 function connectForm(){
@@ -139,17 +137,6 @@ function registerNewUser(){
 
 registerFormSend.addEventListener("click", registerNewUser)
 
-
-function connectUser(user){
-    sessionStorage.user = JSON.stringify(user);
-    document.location.reload();
-}
-
-function disconnectUser(){
-    sessionStorage.removeItem("user");
-    document.location.reload();
-}
-
 function tryConnectUser() {
     let identifiantInput = document.getElementById("identifiantInput");
     let passwordInput = document.getElementById("passwordInputConnect");
@@ -183,12 +170,3 @@ function tryConnectUser() {
 }
 
 sendConnectForm.addEventListener("click", tryConnectUser)
-
-function buildSpaceConnected() {
-    let txt = "";
-    txt += "<button type='button' class='btn btn-light' id='disconnectBtn'><i class='fa-solid fa-right-from-bracket me-2'></i>Se déconnecter</button>"
-    userFlex.innerHTML = txt;
-
-    const disconnectBtn = document.getElementById("disconnectBtn")
-    disconnectBtn.addEventListener("click", disconnectUser);
-}

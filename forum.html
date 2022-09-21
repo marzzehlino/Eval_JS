@@ -17,7 +17,7 @@
                 <div class="col-6">
                     <div class="d-flex flex-row align-items-center">
                         <a class="navbar-brand" href="#">
-                            <img src="img/logo.png"  class="me-2" width="32" height="32"/>
+                            <img src="img/logo.png"  class="me-2" width="32" alt="Logo Discu'ton" height="32"/>
                             Discu'ton
                         </a>
                         <ul class="navbar-nav text-white">
@@ -35,8 +35,8 @@
                 </div>
                 <div class="col-6">
                     <div class="d-flex justify-content-end float-end text-white" id="userForm">
-                        <a href="#" class="me-2 text-white"><i class="fa-solid fa-user"></i> Se connecter</a>
-                        <a href="#" class="text-white"><i class="fa-solid fa-user-pen"></i> S'inscrire</a>
+                        <a href="#" class="me-2 text-white" id="connectBtn"><i class="fa-solid fa-user"></i> Se connecter</a>
+                        <a href="#" class="text-white" id="registerBtn"><i class="fa-solid fa-user-pen"></i> S'inscrire</a>
                     </div>
                 </div>
             </div>
@@ -86,6 +86,98 @@
         </div>
     </div>
 
+    <div class="modal fade" id="connectModal" tabindex="-1" aria-labelledby="connectModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="connectModalLabel">Se connecter</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="modal-body" id="connectForm">
+                <div class="mb-4" id="identifiantSectionConnect">
+                    <label for="identifiantInput" class="form-label">Identifiant :</label>
+                    <input type="text" class="form-control" id="identifiantInput" required>                  
+                </div>
+                <div class="mb-4" id="passwordSectionConnect">
+                    <label for="passwordInputConnect" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="passwordInputConnect" required>                    
+                </div>
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-primary" id="sendConnectForm">Confirmer</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="registerModalLabel"><i class="fa-solid fa-user-pen me-2"></i>- S'inscrire</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="modal-body" id="registerForm">
+                <div class="row mb-3">
+                    <div class="col" id="firstNameSectionRegister">
+                        <label for="firstName" class="form-label">Prénom :</label>
+                        <input type="text" class="form-control" id="firstNameRegister" placeholder="John" required>
+                      </div>
+                      <div class="col" id="lastNameSectionRegister">
+                        <label for="lastName" class="form-label">Nom :</label>
+                        <input type="text" class="form-control" id="lastNameRegister" placeholder="Doe" required>
+                      </div>                    
+                </div>
+                <div class="mb-3" id="pseudoSectionRegister">
+                    <label for="lastName" class="form-label">Pseudo :</label>
+                    <input type="text" class="form-control" id="pseudoRegister" required>
+                </div>
+                <div class="mb-3">
+                    <p> Vous êtes un(e) :</p>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" value="H" type="radio" name="GenderRadio" id="maleRegister" checked>
+                                <label class="form-check-label" for="maleRegister">Homme</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" value="F" type="radio" name="GenderRadio" id="femelleRegister">
+                                <label class="form-check-label" for="femelleRegister">Femme</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3" id="mailSectionRegister">
+                    <label for="mailInputRegister" class="form-label">Adresse e-mail :</label>
+                    <input type="email" class="form-control" id="mailInputRegister" aria-describedby="emailHelp" placeholder="abcdefg@xyz.fr" required>
+                    <div id="emailHelp" class="form-text">Nous ne partagerons jamais vos identifiants.</div>
+                </div>
+                <div class="mb-3" id="passwordSectionRegister">
+                    <label for="passwordInputRegister" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control mb-3" id="passwordInputRegister" placeholder="*********" required>
+                    <label for="confirmPasswordInput" class="form-label">Confirmation votre mot de passe :</label>
+                    <input type="password" class="form-control" id="confirmPasswordInputRegister" placeholder="*********" required>
+                </div>
+                <div class="mb-3" id="ageSectionRegister">
+                    <label for="ageInput" class="form-label">Votre âge :</label>
+                    <input type="number" class="form-control" id="ageInputRegister" placeholder="22" min="1" max="135">
+                </div>
+                <div class="mb-4">
+                    <label for="cityInput" class="form-label">Votre ville :</label>
+                    <input type="text" class="form-control" id="cityInputRegister" placeholder="Lille">
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Fermer</button>
+                <button type="submit" class="btn btn-primary" id="registerSendForm">Confirmer</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <footer class="bg-dark">
         <div class="row">
             <div class="col-6 text-white p-4">
@@ -112,6 +204,7 @@
         </div>
     </footer>
     <script src="main.js"></script>
+    <script src="index.js"></script>
     <script src="forum.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

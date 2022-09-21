@@ -1,3 +1,5 @@
+const userFlex = document.getElementById("userForm")
+
 function pseudoAlreadyRegister(pseudo){
     let users = JSON.parse(localStorage.users)
 
@@ -18,6 +20,16 @@ function retrieveUser(identifiant){
     let resultFind = users.find( user => (user.mail === identifiant || user.pseudo === identifiant));
 
     return resultFind;
+}
+
+function connectUser(user){
+    sessionStorage.user = JSON.stringify(user);
+    document.location.reload();
+}
+
+function disconnectUser(){
+    sessionStorage.removeItem("user");
+    document.location.reload();
 }
 
 function createNewUser(data){
@@ -42,6 +54,15 @@ function createNewUser(data){
 
 function userConnected(){
     return sessionStorage.user != null;
+}
+
+function buildSpaceConnected() {
+    let txt = "";
+    txt += "<button type='button' class='btn btn-light' id='disconnectBtn'><i class='fa-solid fa-right-from-bracket me-2'></i>Se déconnecter</button>"
+    userFlex.innerHTML = txt;
+
+    const disconnectBtn = document.getElementById("disconnectBtn")
+    disconnectBtn.addEventListener("click", disconnectUser);
 }
 
 window.addEventListener('load', (event) => {
