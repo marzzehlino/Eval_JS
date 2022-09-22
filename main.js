@@ -67,14 +67,6 @@ function buildSpaceConnected() {
 
 window.addEventListener('load', (event) => {
     let users = [];
-    let sujets = {};
-
-
-    if (localStorage.sujets != null) {
-        sujets = JSON.parse(localStorage.sujets);
-    } else {
-        localStorage.sujets = JSON.stringify(sujets);
-    }
 
     if (localStorage.users != null) {
         users = JSON.parse(localStorage.users);
