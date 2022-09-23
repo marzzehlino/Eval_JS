@@ -44,6 +44,17 @@ html,body {
     background-color: #F5F9FA;
 }
 
-.forum-header {
-    background-color: black;
+.color-pink {
+    color : #C02561;
+}
+
+.color-pink:hover {
+    color: #991d4d !important;
+}
+
+.no-borders{
+    border: none !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
 }

@@ -5,6 +5,10 @@ const iconMenuDrop = document.getElementById("iconMenu-Drop");
 const flexForum = document.getElementById("forum-body");
 const sendBtnCommentaire = document.getElementById("sendBtnCommentaire");
 
+/*
+  Liste d'icônes que j'utilise pour créer un sujet (Plus design)
+  @author Anthony (fontawesome)
+*/
 let icons = [
     {icons_id: "fa-file", icons_name: "Fichier"},
     {icons_id : "fa-house", icons_name : "Maison"},
@@ -12,6 +16,12 @@ let icons = [
     {icons_id : "fa-comments", icons_name : "Commentaires"},
 ]
 
+/*
+    Fonction qui permet de sélectionner une icône différentes sur la liste des icônes disponibles,
+    elle affiche l'icône sélectionnée sur le DropDown;
+    @author Anthony
+    @param Key : La clé de l'icône correspondante.
+*/
 function selectIcon(select){
     let icon = icons[select]
     let txt = "";
@@ -19,6 +29,10 @@ function selectIcon(select){
     iconsDropBtn.innerHTML = txt;
 }
 
+/*
+    Fonction permettant d'afficher la liste des icônes disponibles dans le dropdown correspondant
+    @author Anthony
+*/
 function rebuildIconDrop(){
     selectIcon(0);
 
@@ -31,26 +45,71 @@ function rebuildIconDrop(){
 
 rebuildIconDrop();
 
-function notifyUser(){
- // A FAIRE : 
+/*
+    Fonction permettant d'afficher le temps du dernier like/commentaire
+    @author Anthony
+    @param Date : date du dernier commentaire/likes;
+    @return String : Temps du dernier commentaire (ex : Il y a 2 minutes);
+*/
+function reformDate(date){
+    let dateNow = new Date();
+    let dateCompare = Date.parse(date);
 
- /*
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-            <img src="..." class="rounded me-2" alt="...">
-            <strong class="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-            Hello, world! This is a toast message.
-            </div>
-        </div>
-    </div>
- */
+    var hours = Math.floor(Math.abs(dateNow - dateCompare) / 36e5);
+
+    if (hours < 1) {
+        var minutes = (dateNow - dateCompare) / 1000;
+        minutes /= 60;
+        return "Il y a "+Math.abs(Math.floor(minutes))+" minutes";
+
+    } else {
+        return "Il y a "+hours+" heures";
+    }
 }
 
+
+
+/*
+    Fonction qui permet d'afficher la liste des sujets/topics du forum
+    @author Anthony
+*/
+function rebuildTopics(){
+    let sujets = JSON.parse(localStorage.sujets);
+    flexForum.innerHTML = "";
+    for (let index = 0; index < sujets.length; index++) {
+        buildSujet(sujets[index]); 
+    } 
+}
+
+/*
+    Fonction permettant d'ajouter un like sur un sujet/topic
+    @author Anthony
+    @param Key : Clé du sujet correspondant dans le tableau des sujets
+*/
+function addLike(idSujet){
+    let sujets = JSON.parse(localStorage.sujets);
+    let sessionUser = JSON.parse(sessionStorage.user);
+
+    let newLike = {};
+    newLike.auteur = sessionUser.pseudo;
+    newLike.date = new Date();
+
+    let arrayLikes = sujets[idSujet].likes;
+    arrayLikes.push(newLike);
+
+    localStorage.sujets = JSON.stringify(sujets);
+    notifyUser("Votre like à été ajouté !");
+    rebuildTopics();
+    openSujet(sujets[idSujet]);
+}
+
+/*
+    Fonction permettant d'ajouter un commentaire sur un sujet/topic
+    elle vérifie également que le commentaire ne soit pas vide
+    @author Anthony
+    @param String : Le commentaire qu'un utilisateur a saisi
+    @param Key : Clé du sujet correspondant dans le tableau des sujets
+*/
 function addCommentaire(commentaire, idSujet){
     if (commentaire != "") {
         let sujets = JSON.parse(localStorage.sujets);
@@ -66,10 +125,17 @@ function addCommentaire(commentaire, idSujet){
 
         localStorage.sujets = JSON.stringify(sujets);
 
-        openSujet(sujets[idSujet])
+        notifyUser("Votre commentaire à été ajouté !");
+        rebuildTopics();
+        openSujet(sujets[idSujet]);
     }
 }
 
+/*
+    Fonction permettant d'afficher le sujet que l'on souhaite
+    @author Anthony
+    @param Object : Données du sujet correspondant
+*/
 function openSujet(data){
     let titleSujet = document.getElementById("modalSujetLabel");
     let contenuSujet = document.getElementById("contenuSujetModal");
@@ -79,6 +145,11 @@ function openSujet(data){
     titleSujet.innerHTML = "<p><i class='fa-solid "+icons[data.icon].icons_id+" me-2'></i> - "+data.titre+"</p>"
 
     contenuSujet.innerHTML = "<p>"+data.contenu+"</p>"
+    contenuSujet.innerHTML += "<div class='d-flex flex-row justify-content-end'><a href='#' class='fw-bold fs-5 color-pink' id='addLikesBtn'><i class='fa-solid fa-heart me-2'></i>"+data.likes.length+"</a></div>"
+
+    const addLikesBtn = document.getElementById("addLikesBtn");
+    addLikesBtn.onclick = function(event){addLike(data.id)}
+
 
     let commentairesTxt = ""
     for (let index = 0; index < data.commentaires.length; index++) {
@@ -101,10 +172,15 @@ function openSujet(data){
     $("#modalSujet").modal('show');
 }
 
+/*
+    Fonction permettant d'afficher un sujet/topic dans la listes du forum 
+    @author Anthony
+    @param Object : Données du sujet correspondant
+*/
 function buildSujet(data) {
     let buttonSujet = document.createElement("button")
     buttonSujet.setAttribute("type", "button");
-    buttonSujet.classList.add("btn", "btn-light");
+    buttonSujet.classList.add("btn", "btn-light", "no-borders");
     buttonSujet.onclick = function(event){openSujet(data)}
 
     let row = document.createElement("div");
@@ -152,7 +228,7 @@ function buildSujet(data) {
     let lastCommentaire = document.createElement("p");
     lastCommentaire.classList.add("mb-2", "fw-bold", "fs-5");
     if (data.commentaires[data.commentaires.length - 1] != undefined) {
-        lastCommentaire.textContent = "Dernier commentaire : "+data.commentaires[data.commentaires.length - 1].auteur;
+        lastCommentaire.textContent = "Dernier commentaire : "+reformDate(data.commentaires[data.commentaires.length - 1].date);
     } else {
         lastCommentaire.textContent = "Aucun commentaire !";
     }
@@ -160,38 +236,31 @@ function buildSujet(data) {
 
     let lastLike = document.createElement("p");
     lastLike.classList.add("mb-0", "fs-6");
-    lastLike.textContent = "Dernier like :";
+    if (data.likes[data.likes.length - 1] != undefined) {
+        lastLike.textContent = "Dernier likes : "+reformDate(data.likes[data.likes.length - 1].date);
+    } else {
+        lastLike.textContent = "Aucun like !";
+    }
     flexColumn2.appendChild(lastLike);
 
     flexForum.appendChild(buttonSujet)
-    /*
-    <div class="row">
-        <div class="col-9">
-            <div class="d-flex flex-row align-items-center">
-                <i class="fa-solid fa-file m-4 bg-secondary p-4 rounded-circle"></i>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="mb-2 fw-bold fs-5">Incroyable</p>
-                    <p class="mb-0 fs-6">Auteur</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="d-flex flex-row align-items-center h-100">
-                <div class="d-flex flex-column justify-content-center h-100">
-                    <p class="mb-2 fw-bold fs-5">Dernier commentaire : il y'a deux heures</p>
-                    <p class="mb-0 fs-6">Dernier like : il y'a une heure</p>
-                </div>
-            </div>
-        </div>
-    </div> */
 }
 
+/*
+    Fonction permettant d'afficher le Modal pour créer un nouveau sujet
+    @author Anthony (doc Bootstrap)
+*/
 function drawModal() {
     $("#staticBackdrop").modal('show');
 }
 
 newSujet.addEventListener("click", drawModal);
 
+/*
+    Fonction permettant de créer un sujet/topic en remplissant
+    le formulaire correspondant, elle vérifie également que les champs ne soit pas vide
+    @author Anthony
+*/
 function createNewSujet() {
     const titreInput = document.getElementById("titreInput");
     const contenuInput = document.getElementById("contenuInput");
@@ -217,12 +286,38 @@ function createNewSujet() {
         sujets.push(sujet)
 
         localStorage.sujets = JSON.stringify(sujets);
-        document.location.reload();
+
+        notifyUser("Votre sujet : <span class='fw-bold'>"+sujet.titre+"</span> a été créer !");
+        $("#staticBackdrop").modal("hide");
+        rebuildTopics();
     }
 }
 
 createSujet.addEventListener("click", createNewSujet);
 
+/*
+    Fonction qui permet d'alerter l'utilisateur qu'il n'est pas connecté
+    quand il accède à la page Forum
+    @author Anthony
+*/
+function alertUserNotConnected(){
+    flexForum.innerHTML = ""; // Reset
+
+    let txt = "";
+    txt += "<div class='alert alert-danger d-flex align-items-center mb-0' role='alert'>"
+        txt += "<div class='spinner-border text-danger me-3' role='status'>"
+            txt += "<span class='visually-hidden'>Loading...</span>"
+        txt += "</div>"
+        txt += "<div class='fs-4 fw-bold'>Vous devez être connecté ! Redirection ...</div>"
+    txt += "</div>"
+
+    flexForum.innerHTML = txt;
+}
+/*
+    Au chargement de la page, on initialise les données des sujets/topics
+    & on renvoie l'utilisateur sur la page principal si il n'est pas connecté
+    @author Anthony
+*/
 window.addEventListener('load', (event) => {
     let sujets = [];
 
@@ -232,10 +327,11 @@ window.addEventListener('load', (event) => {
         localStorage.sujets = JSON.stringify(sujets);
     }
     if (!userConnected()) {
-        window.location.replace("index.html");
+        alertUserNotConnected();
+        setTimeout(() => {
+            window.location.replace("index.html");
+        }, 3000);
     } else {
-        for (let index = 0; index < sujets.length; index++) {
-            buildSujet(sujets[index]); 
-        } 
+        rebuildTopics();
     }
 });

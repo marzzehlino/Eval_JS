@@ -5,18 +5,32 @@ const sendConnectForm = document.getElementById("sendConnectForm");
 
 let buildMessages = [];
 
+/*
+    Fonction permettant d'afficher le Modal de connexion
+    @author Anthony (doc Bootstrap)
+*/
 function connectForm(){
     $("#connectModal").modal('show');
 }
 
 connectBtn.addEventListener("click", connectForm)
 
+/*
+    Fonction permettant d'afficher le Modal d'inscription
+    @author Anthony (doc Bootstrap)
+*/
 function registerForm(){
     $("#registerModal").modal('show');
 }
 
 registerBtn.addEventListener("click", registerForm)
 
+/*
+    Fonction qui "vide" le tableau contenant les messages d'erreurs &
+    qui enlève à l'affichage les messages d'erreurs
+    @author Anthony
+    @param Array : Le tableau contenant les message
+*/
 function clearMessages(array){
     array.forEach(element => {
         element.remove();
@@ -24,6 +38,14 @@ function clearMessages(array){
     array = [];
 }
 
+/*
+    Fonction qui permet de créer des messages d'erreurs lors de la vérification des champs
+    @author Anthony
+    @param String : L'id de l'element HTML du message;
+    @param String : Le texte du message qu'on veut afficher
+    @param ElementHTML : Le parent du message (en général la div contenant le labelfor & le input du champ)
+    @param ElementHTML : L'input du champ contenant une erreur de saisie
+*/
 function buildMessage(id, messageTxt, parent, input){
     let message = document.createElement("div")
     message.classList.add("form-text", "text-danger");
@@ -39,6 +61,13 @@ function buildMessage(id, messageTxt, parent, input){
     buildMessages.push(message);
 }
 
+/*
+    Fonction qui permet d'enregistrer un utilisateur en fonction des champs saisies
+    sur le formulaire d'inscription
+    Elle permet également de vérifier les champs saisies & d'afficher des messages d'erreurs
+    si les champs ne sont pas valides.
+    @author Anthony
+*/
 function registerNewUser(){
     let user = {};
     user.prenom;
@@ -80,44 +109,41 @@ function registerNewUser(){
 
     clearMessages(buildMessages)
 
-    if (!mailRegex.test(resultMail)){
-        buildMessage("emailHelp", "Votre adresse e-mail n'est pas valide !", mailSection, inputMail);
-        
-        return false;
-    }
-    if (resultFirstName == "" || resultLastName == "" || resultPseudo == "") {
-        if (resultFirstName == "") {
-            buildMessage("firstNameHelp", "Ce champ ne doit pas être vide !", firstNameSection, inputFirstName);
+    if (!mailRegex.test(resultMail) || resultFirstName == "" || resultLastName == "" || resultPseudo == "" || resultConfirmPassword !== resultPassword || pseudoAlreadyRegister(resultPseudo) || mailAlreadyRegister(resultMail)) {
+
+        if (!mailRegex.test(resultMail)){
+            buildMessage("emailHelp", "Votre adresse e-mail n'est pas valide !", mailSection, inputMail);
         }
-        if (resultLastName == "") {
-            buildMessage("lastNameHelp", "Ce champ ne doit pas être vide !", lastNameSection, inputLastName);
+        if (resultFirstName == "" || resultLastName == "" || resultPseudo == "") {
+            if (resultFirstName == "") {
+                buildMessage("firstNameHelp", "Ce champ ne doit pas être vide !", firstNameSection, inputFirstName);
+            }
+            if (resultLastName == "") {
+                buildMessage("lastNameHelp", "Ce champ ne doit pas être vide !", lastNameSection, inputLastName);
+            }
+
+            if (resultPseudo == "") {
+                buildMessage("pseudoHelp", "Ce champ ne doit pas être vide !", pseudoSection, inputPseudo);
+            }
         }
 
-        if (resultPseudo == "") {
-            buildMessage("pseudoHelp", "Ce champ ne doit pas être vide !", pseudoSection, inputPseudo);
+        if (resultConfirmPassword !== resultPassword) {
+            buildMessage("passwordHelp", "Les champs ne sont pas identiques !", passwordSection, inputConfirmPassword);
         }
 
-        return false;
-    }
-
-    if (resultConfirmPassword !== resultPassword) {
-        buildMessage("passwordHelp", "Les champs ne sont pas identiques !", passwordSection, inputConfirmPassword);
-        return false;
-    }
-
-    if (resultAge != ""){
-        if (resultAge < 1 || resultAge > 135) {
-            buildMessage("ageHelp", "Votre âge doit être compris entre 1 et 135 !", ageSection, inputAge);
-            return false;
+        if (resultAge != ""){
+            if (resultAge < 1 || resultAge > 135) {
+                buildMessage("ageHelp", "Votre âge doit être compris entre 1 et 135 !", ageSection, inputAge);
+            }
         }
-    }
 
-    if (pseudoAlreadyRegister(resultPseudo) || mailAlreadyRegister(resultMail)) {
-        if (pseudoAlreadyRegister(resultPseudo)){
-            buildMessage("pseudoHelp2", "Ce pseudo est déjà utilisé !", pseudoSection, inputPseudo);
-        }
-        if (mailAlreadyRegister(resultMail)) {
-            buildMessage("emailHelp2", "Cette adresse e-mail est déjà utilisée !", mailSection, inputMail);
+        if (pseudoAlreadyRegister(resultPseudo) || mailAlreadyRegister(resultMail)) {
+            if (pseudoAlreadyRegister(resultPseudo)){
+                buildMessage("pseudoHelp2", "Ce pseudo est déjà utilisé !", pseudoSection, inputPseudo);
+            }
+            if (mailAlreadyRegister(resultMail)) {
+                buildMessage("emailHelp2", "Cette adresse e-mail est déjà utilisée !", mailSection, inputMail);
+            }
         }
         return false;
     }
@@ -137,6 +163,12 @@ function registerNewUser(){
 
 registerFormSend.addEventListener("click", registerNewUser)
 
+/*
+    Fonction qui permet de connecter un utilisateur en fonction des champs saisies
+    sur le formulaire de connexion elle vérifie les champs & retrouve l'utilisateur
+    correspondant aux informations saisies; sinon elle affiche des messages d'erreurs.
+    @author Anthony
+*/
 function tryConnectUser() {
     let identifiantInput = document.getElementById("identifiantInput");
     let passwordInput = document.getElementById("passwordInputConnect");
@@ -153,7 +185,7 @@ function tryConnectUser() {
         if (passwordInput.value == "") {
             buildMessage("passwordHelp", "Votre mot de passe ne doit pas être vide !", passwordSection, passwordInput);
         }
-        return false
+        return false;
     }
 
     if (typeof retrieveUser(identifiantInput.value) === 'object'){
@@ -163,9 +195,11 @@ function tryConnectUser() {
         } else {
             console.log(user.password, passwordInput.value)
             buildMessage("passwordHelp", "Votre mot de passe n'est pas valide !", passwordSection, passwordInput);
+            return false;
         }
     } else {
         buildMessage("emailHelp2", "Nous ne trouvons pas cet identifiant !", identifiantSection, identifiantInput);
+        return false;
     }
 }
 

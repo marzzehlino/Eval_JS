@@ -10,7 +10,7 @@
 
     <script src="https://kit.fontawesome.com/988ff1373e.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="bg-discuton-primary">
     <header>
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container-fluid">
@@ -43,7 +43,7 @@
         </nav>
     </header>
 
-    <div class="container-fluid bg-discuton-primary p-4">
+    <div class="container-fluid p-4 my-4" id="mainPage">
         <div class="row justify-content-center">
             <div class="col-11">
                 <div class="row">
@@ -58,10 +58,10 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="forum"> 
-                        <div class="bg-dark rounded-top p-1 forum-header">
-                            <p class="fs-5 text-white mt-3 fw-bold ms-2"><i class="fa-solid fa-file me-2"></i>Tous les sujets :</p>
+                        <div class="bg-dark bg-gradient rounded-top p-1 forum-header">
+                            <p class="fs-5 text-white mt-3 fw-bold ms-2"><i class="fa-solid fa-file me-2"></i>- Tous les sujets :</p>
                         </div>
-                        <div class="bg-light.bg-gradient border border-dark border-4">
+                        <div class="bg-light bg-gradient border border-dark border-4">
                             <div class="d-flex flex-column" id="forum-body">
                                
                             </div>
@@ -250,13 +250,25 @@
         </div>
     </div>
 
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="img/logo.png" width="16" height="16" class="rounded me-2" alt="Logo Discu'ton">
+            <strong class="me-auto">Discu'ton</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body" id="notifyMessage">
+          </div>
+        </div>
+    </div>
+
     <footer class="bg-dark">
         <div class="row">
             <div class="col-6 text-white p-4">
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <p class="fs-4 fw-bold mb-2 w-50">LIENS ANNEXES</p>
                     <ul class="fs-5 ps-0 w-50 mb-0">
-                        <li><a href="#" class="text-white">Acceuil</a></li>
+                        <li><a href="index.html" class="text-white">Acceuil</a></li>
                         <li><a href="#" class="text-white">A propos</a></li>
                         <li><a href="#" class="text-white">Forum</a></li>
                     </ul>
