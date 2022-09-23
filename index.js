@@ -213,7 +213,6 @@ $("#connectModal").keyup(function(e) {
 
 $("#registerModal").keyup(function(e) {
     if(e.keyCode==13){
-        console.log("enter")
         registerNewUser();
     }
 });
