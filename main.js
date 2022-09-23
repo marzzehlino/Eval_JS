@@ -84,9 +84,7 @@ function createNewUser(data){
 
     notifyUser("Votre inscription a bien été pris en compte !");
     $("#registerModal").modal("hide");
-    setTimeout(() => {
-        document.location.reload();
-    }, 2000);
+    $("#connectModal").modal("show");
 }
 
 /*
