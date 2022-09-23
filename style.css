@@ -43,3 +43,18 @@ html,body {
 .bg-discuton-primary {
     background-color: #F5F9FA;
 }
+
+.color-pink {
+    color : #C02561;
+}
+
+.color-pink:hover {
+    color: #991d4d !important;
+}
+
+.no-borders{
+    border: none !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}

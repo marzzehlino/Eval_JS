@@ -43,7 +43,7 @@
         </nav>
     </header>
 
-    <div class="container-fluid bg-discuton-primary p-0">
+    <div class="container-fluid bg-discuton-primary p-0" id="mainPage">
         <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -162,7 +162,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="connectModalLabel">Se connecter</h5>
+              <h5 class="modal-title" id="connectModalLabel"><i class="fa-solid fa-user me-2"></i>- Se connecter</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form class="modal-body" id="connectForm">
@@ -193,20 +193,20 @@
             <form class="modal-body" id="registerForm">
                 <div class="row mb-3">
                     <div class="col" id="firstNameSectionRegister">
-                        <label for="firstName" class="form-label">Prénom :</label>
+                        <label for="firstName" class="form-label">Prénom : <span class="fw-bold">*</span></label>
                         <input type="text" class="form-control" id="firstNameRegister" placeholder="John" required>
                       </div>
                       <div class="col" id="lastNameSectionRegister">
-                        <label for="lastName" class="form-label">Nom :</label>
+                        <label for="lastName" class="form-label">Nom : <span class="fw-bold">*</span></label>
                         <input type="text" class="form-control" id="lastNameRegister" placeholder="Doe" required>
                       </div>                    
                 </div>
                 <div class="mb-3" id="pseudoSectionRegister">
-                    <label for="lastName" class="form-label">Pseudo :</label>
+                    <label for="lastName" class="form-label">Pseudo : <span class="fw-bold">*</span></label>
                     <input type="text" class="form-control" id="pseudoRegister" required>
                 </div>
                 <div class="mb-3">
-                    <p> Vous êtes un(e) :</p>
+                    <p> Vous êtes un(e) : <span class="fw-bold">*</span></p>
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
@@ -223,14 +223,14 @@
                     </div>
                 </div>
                 <div class="mb-3" id="mailSectionRegister">
-                    <label for="mailInputRegister" class="form-label">Adresse e-mail :</label>
+                    <label for="mailInputRegister" class="form-label">Adresse e-mail : <span class="fw-bold">*</span></label>
                     <input type="email" class="form-control" id="mailInputRegister" aria-describedby="emailHelp" placeholder="abcdefg@xyz.fr" required>
                     <div id="emailHelp" class="form-text">Nous ne partagerons jamais vos identifiants.</div>
                 </div>
                 <div class="mb-3" id="passwordSectionRegister">
-                    <label for="passwordInputRegister" class="form-label">Mot de passe :</label>
+                    <label for="passwordInputRegister" class="form-label">Mot de passe : <span class="fw-bold">*</span></label>
                     <input type="password" class="form-control mb-3" id="passwordInputRegister" placeholder="*********" required>
-                    <label for="confirmPasswordInput" class="form-label">Confirmation votre mot de passe :</label>
+                    <label for="confirmPasswordInput" class="form-label">Confirmation votre mot de passe : <span class="fw-bold">*</span></label>
                     <input type="password" class="form-control" id="confirmPasswordInputRegister" placeholder="*********" required>
                 </div>
                 <div class="mb-3" id="ageSectionRegister">
@@ -241,11 +241,26 @@
                     <label for="cityInput" class="form-label">Votre ville :</label>
                     <input type="text" class="form-control" id="cityInputRegister" placeholder="Lille">
                 </div>
+                <div class="d-flex justify-content-end mb-4">
+                    <p class="mb-0 fs-6 fst-italic">Les champs contenant : <span class="fw-bold">*</span> sont obligatoires pour votre inscription</p>
+                </div>
             </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Fermer</button>
                 <button type="submit" class="btn btn-primary" id="registerSendForm">Confirmer</button>
             </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="img/logo.png" width="16" height="16" class="rounded me-2" alt="Logo Discu'ton">
+            <strong class="me-auto">Discu'ton</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body" id="notifyMessage">
           </div>
         </div>
     </div>
@@ -258,7 +273,7 @@
                     <ul class="fs-5 ps-0 w-50 mb-0">
                         <li><a href="#" class="text-white">Acceuil</a></li>
                         <li><a href="#" class="text-white">A propos</a></li>
-                        <li><a href="#" class="text-white">Forum</a></li>
+                        <li><a href="forum.html" class="text-white">Forum</a></li>
                     </ul>
                 </div>
             </div>
