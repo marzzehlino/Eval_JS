@@ -87,14 +87,14 @@ function registerNewUser(){
     let inputConfirmPassword = document.getElementById("confirmPasswordInputRegister");
     let inputAge = document.getElementById("ageInputRegister");
 
-    let resultFirstName = inputFirstName.value;
-    let resultLastName = inputLastName.value;
-    let resultPseudo = inputPseudo.value;
+    let resultFirstName = inputFirstName.value.trim();
+    let resultLastName = inputLastName.value.trim();
+    let resultPseudo = inputPseudo.value.trim();
     let resultGender = document.querySelector('input[name=GenderRadio]:checked').value;
-    let resultMail = inputMail.value;
+    let resultMail = inputMail.value.trim();
     let resultPassword = inputPassword.value;
     let resultConfirmPassword = inputConfirmPassword.value;
-    let resultAge = inputAge.value;
+    let resultAge = inputAge.value.trim();
     let resultCity = document.getElementById("cityInputRegister").value;
 
     let mailSection = document.getElementById("mailSectionRegister");
@@ -204,3 +204,15 @@ function tryConnectUser() {
 }
 
 sendConnectForm.addEventListener("click", tryConnectUser)
+
+$("#connectModal").keyup(function(e) {
+    if(e.keyCode==13){
+        tryConnectUser();
+    }
+});
+
+$("#registerModal").keyup(function(e) {
+    if(e.keyCode==13){
+        registerNewUser();
+    }
+});
