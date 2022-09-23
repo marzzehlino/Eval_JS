@@ -127,8 +127,12 @@ function registerNewUser(){
             }
         }
 
-        if (resultConfirmPassword !== resultPassword) {
-            buildMessage("passwordHelp", "Les champs ne sont pas identiques !", passwordSection, inputConfirmPassword);
+        if (resultConfirmPassword != "" && resultPassword != "") {
+            if (resultConfirmPassword !== resultPassword) {
+                buildMessage("passwordHelp", "Les champs ne sont pas identiques !", passwordSection, inputConfirmPassword);
+            }
+        } else {
+            buildMessage("passwordHelp2", "Les champs doit être rempli !", passwordSection, inputConfirmPassword);
         }
 
         if (resultAge != ""){
@@ -190,6 +194,8 @@ function tryConnectUser() {
 
     if (typeof retrieveUser(identifiantInput.value) === 'object'){
         let user = retrieveUser(identifiantInput.value);
+        user.lastConnexion = new Date();
+        
         if (passwordInput.value == user.password) {
             connectUser(user)
         } else {

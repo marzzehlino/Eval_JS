@@ -256,6 +256,15 @@ function drawModal() {
 
 newSujet.addEventListener("click", drawModal);
 
+function addInformations(){
+    let sessionUser = JSON.parse(sessionStorage.user);
+
+    let infoUser = document.createElement("p")
+    infoUser.classList.add("mb-0", "me-4")
+    let date = new Date(Date.parse(sessionUser.lastConnexion));
+    infoUser.textContent = "Connecter en tant que : "+sessionUser.pseudo+" | Dernière connexion : "+date.getDate()+"/"+(date.getMonth() + 1)+" à "+date.getHours()+":"+date.getUTCMinutes();
+    userFlex.insertBefore(infoUser, userFlex.children[0])
+}
 /*
     Fonction permettant de créer un sujet/topic en remplissant
     le formulaire correspondant, elle vérifie également que les champs ne soit pas vide
@@ -332,6 +341,7 @@ window.addEventListener('load', (event) => {
             window.location.replace("index.html");
         }, 3000);
     } else {
+        addInformations();
         rebuildTopics();
     }
 });
