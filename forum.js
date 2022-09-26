@@ -256,6 +256,10 @@ function drawModal() {
 
 newSujet.addEventListener("click", drawModal);
 
+/*
+    Fonction d'afficher la dernière connexion de l'utilisateur
+    @author Anthony
+*/
 function addInformations(){
     let sessionUser = JSON.parse(sessionStorage.user);
 
