@@ -105,7 +105,7 @@ function registerNewUser(){
     let ageSection = document.getElementById("ageSectionRegister")
 
 
-    let mailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    let mailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     clearMessages(buildMessages)
 
@@ -210,6 +210,13 @@ function tryConnectUser() {
 }
 
 sendConnectForm.addEventListener("click", tryConnectUser)
+
+
+/*
+    Lorsque qu'on appuie sur entrer sur le formulaire d'inscription & de connexion
+    on lance la fonction correspondant.
+    @author Anthony
+*/
 
 $("#connectModal").keyup(function(e) {
     if(e.keyCode==13){
