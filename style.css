@@ -1,0 +1,60 @@
+a {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+ul, li {
+    list-style: none;
+}
+
+html,body {
+    overflow-x: hidden;
+}
+
+#Illustration-1 {
+    background: url("img/forum.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 700px;
+}
+
+#Illustration-2 {
+    background: url("img/forum-2.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 700px;
+}
+
+#Illustration-3 {
+    background: url("img/forum-3.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 700px;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+    transform: scale(1,1);
+}
+
+.bg-discuton-primary {
+    background-color: #F5F9FA;
+}
+
+.color-pink {
+    color : #C02561;
+}
+
+.color-pink:hover {
+    color: #991d4d !important;
+}
+
+.no-borders{
+    border: none !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}

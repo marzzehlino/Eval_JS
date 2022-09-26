@@ -10,7 +10,7 @@
 
     <script src="https://kit.fontawesome.com/988ff1373e.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="bg-discuton-primary">
     <header>
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container-fluid">
@@ -22,19 +22,19 @@
                         </a>
                         <ul class="navbar-nav text-white">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+                                <a class="nav-link" aria-current="page" href="index.html">Acceuil</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">A propos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="forum.html">Forum</a>
+                                <a class="nav-link active" href="forum.html">Forum</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="d-flex justify-content-end float-end text-white" id="userForm">
+                    <div class="d-flex justify-content-end align-items-center text-white" id="userForm">
                         <a href="#" class="me-2 text-white" id="connectBtn"><i class="fa-solid fa-user"></i> Se connecter</a>
                         <a href="#" class="text-white" id="registerBtn"><i class="fa-solid fa-user-pen"></i> S'inscrire</a>
                     </div>
@@ -43,118 +43,118 @@
         </nav>
     </header>
 
-    <div class="container-fluid bg-discuton-primary p-0" id="mainPage">
-        <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <div class="container-fluid p-4 my-4" id="mainPage">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="row">
+                    <div class="col-6">
+                        <p class="fs-4 fw-bold">Forum</p>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex flex-row justify-content-end">
+                            <button type="button" class="btn btn-primary" id="newSujet"><i class="fa-solid fa-file-circle-plus me-2"></i>Nouveau sujet</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="forum"> 
+                        <div class="bg-dark bg-gradient rounded-top p-1 forum-header">
+                            <p class="fs-5 text-white mt-3 fw-bold ms-2"><i class="fa-solid fa-file me-2"></i>- Tous les sujets :</p>
+                        </div>
+                        <div class="bg-light bg-gradient border border-dark border-4">
+                            <div class="d-flex flex-column" id="forum-body">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div id="Illustration-1" class="d-block Illustration w-100">
-                    <div class="position-absolute bottom-0 start-0 card text-center m-4" style="width: 30rem;">
-                        <div class="card-header">
-                            <p class="text-dark fw-bold fs-5 my-1">Rejoingez-nous!</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="text-dark fs-6 my-1 mx-auto">
-                                Notre plate-forme est accessible et compte plus de <span class="fw-bold">250M</span> d'utilisateur !
-                            </p>
-                        </div>
-                      </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div id="Illustration-2" class="d-block Illustration w-100">
-                    <div class="position-absolute bottom-0 start-0 card text-center m-4" style="width: 30rem;">
-                        <div class="card-header">
-                            <p class="text-dark fw-bold fs-5 my-1">Des forums de discussion pour tout le monde !</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="text-dark fs-6 my-1 mx-auto">
-                                Nous avons mis en place différents forum de discussion
-                                accessible à tous, à tout moment !
-                            </p>
-                        </div>
-                      </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div id="Illustration-3" class="d-block Illustration w-100">
-                    <div class="position-absolute top-0 end-0 card text-center m-4" style="width: 30rem;">
-                        <div class="card-header">
-                            <p class="text-dark fw-bold fs-5 my-1">+ 1000 Sujets différents !</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="text-dark fs-6 my-1 mx-auto">
-                                Avec autant de sujets, rejoingez-nous maintenant !
-                            </p>
-                        </div>
-                      </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
         </div>
+    </div>
 
-        <div class="d-flex flex-row justify-content-center align-items-center flex-wrap py-4">
-            <div class="col-6 py-4">
-                <div class="d-flex flex-row justify-content-center align-items-center">
-                    <img src="img/security.png" class="me-4" alt="Image d'illustration de la sécurisation de bout en bout" width="128" height="128"/>
-                    <div class="d-flex flex-column text-center" style="width: 32rem;">
-                        <p class="fw-bold fs-4">Une connexion sécurisée !</p>
-                        <p class="fs-5">
-                            Vos identifiants ne sont jamais communiqué,
-                            de plus nous utilisons la connexion sécurisé de bout-en-bout
-                        </p>
+    <div class="modal fade" id="modalSujet" tabindex="-1" aria-labelledby="modalSujetLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalSujetLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="contenuSujetModal">
+                
+            </div>
+            <div class="modal-footer p-0">
+                <div class="row w-100">
+                    <div class="accordion p-0" id="commentaireSection">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Commentaires
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body" id="commentaireBody">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Ajouter un commentaire
+                              </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" placeholder="Laisser un commentaire ici.." id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <label for="floatingTextarea2">Mon commentaire :</label>
+                                </div>
+                                <div class="d-flex flex-row justify-content-end">
+                                    <button type="button" class="btn btn-primary px-4" id="sendBtnCommentaire">Envoyer</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-6 py-4">
-                <div class="d-flex flex-row justify-content-center align-items-center">
-                    <img src="img/sujet-tendance.png" class="me-4" alt="Image d'illustration de la sécurisation de bout en bout" width="128" height="128"/>
-                    <div class="d-flex flex-column text-center" style="width: 32rem;">
-                        <p class="fw-bold fs-4">Retrouvez des milliers de sujets tendances !</p>
-                        <p class="fs-5">
-                            Des centaines de nouvelles discussions sont crées chaque jour,
-                            nous sommes sur que vous trouverez chaussure à votre pied !
-                        </p>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Créer un nouveau sujet</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="modal-body">
+                <div class="mb-4">
+                    <div class="dropdown">
+                        <div class="d-flex flex-row justify-content-start align-items-center">
+                            <p class="mb-0 me-2"> Icônes : </p>
+                            <button class="btn btn-secondary dropdown-toggle" id="icons-dropBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            </button>
+                            <ul class="dropdown-menu" id="iconMenu-Drop">
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 py-4">
-                <div class="d-flex flex-row justify-content-center align-items-center">
-                    <img src="img/update.png" class="me-4" alt="Image d'illustration de la sécurisation de bout en bout" width="128" height="128"/>
-                    <div class="d-flex flex-column text-center" style="width: 32rem;">
-                        <p class="fw-bold fs-4">Mis à jour régulier !</p>
-                        <p class="fs-5">
-                            Nos équipes de développement mettent à jour notre plate-forme
-                            pour améliorer nos contenus, et votre sécurité !
-                        </p>
-                    </div>
+                <div class="mb-4">
+                    <label for="titreInput" class="form-label">Titre :</label>
+                    <input type="text" class="form-control" id="titreInput">
                 </div>
-            </div>
-            <div class="col-6 py-4">
-                <div class="d-flex flex-row justify-content-center align-items-center">
-                    <img src="img/teamwork.png" class="me-4" alt="Image d'illustration de la sécurisation de bout en bout" width="128" height="128"/>
-                    <div class="d-flex flex-column text-center" style="width: 32rem;">
-                        <p class="fw-bold fs-4">Une communautée activé !</p>
-                        <p class="fs-5">
-                            Notre communautée reste actifs, s'entre-aident 
-                            et nous donnes leurs opinions sur nos contenues, une aide précieuse pour nous améliorer !
-                        </p>
-                    </div>
+                <div class="mb-4">
+                    <label for="contenuInput" class="form-label">Contenu :</label>
+                    <textarea class="form-control" id="contenuInput"></textarea>
                 </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="createSujet">Compris</button>
             </div>
-            <button type="button" class="btn btn-primary rounded-4 fs-5 px-3 py-2">Voir les sujets du forum</button>
+            </div>
         </div>
     </div>
 
@@ -162,7 +162,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="connectModalLabel"><i class="fa-solid fa-user me-2"></i>- Se connecter</h5>
+              <h5 class="modal-title" id="connectModalLabel">Se connecter</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form class="modal-body" id="connectForm">
@@ -193,20 +193,20 @@
             <form class="modal-body" id="registerForm">
                 <div class="row mb-3">
                     <div class="col" id="firstNameSectionRegister">
-                        <label for="firstName" class="form-label">Prénom : <span class="fw-bold">*</span></label>
+                        <label for="firstName" class="form-label">Prénom :</label>
                         <input type="text" class="form-control" id="firstNameRegister" placeholder="John" required>
                       </div>
                       <div class="col" id="lastNameSectionRegister">
-                        <label for="lastName" class="form-label">Nom : <span class="fw-bold">*</span></label>
+                        <label for="lastName" class="form-label">Nom :</label>
                         <input type="text" class="form-control" id="lastNameRegister" placeholder="Doe" required>
                       </div>                    
                 </div>
                 <div class="mb-3" id="pseudoSectionRegister">
-                    <label for="lastName" class="form-label">Pseudo : <span class="fw-bold">*</span></label>
+                    <label for="lastName" class="form-label">Pseudo :</label>
                     <input type="text" class="form-control" id="pseudoRegister" required>
                 </div>
                 <div class="mb-3">
-                    <p> Vous êtes un(e) : <span class="fw-bold">*</span></p>
+                    <p> Vous êtes un(e) :</p>
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
@@ -223,14 +223,14 @@
                     </div>
                 </div>
                 <div class="mb-3" id="mailSectionRegister">
-                    <label for="mailInputRegister" class="form-label">Adresse e-mail : <span class="fw-bold">*</span></label>
+                    <label for="mailInputRegister" class="form-label">Adresse e-mail :</label>
                     <input type="email" class="form-control" id="mailInputRegister" aria-describedby="emailHelp" placeholder="abcdefg@xyz.fr" required>
                     <div id="emailHelp" class="form-text">Nous ne partagerons jamais vos identifiants.</div>
                 </div>
                 <div class="mb-3" id="passwordSectionRegister">
-                    <label for="passwordInputRegister" class="form-label">Mot de passe : <span class="fw-bold">*</span></label>
+                    <label for="passwordInputRegister" class="form-label">Mot de passe :</label>
                     <input type="password" class="form-control mb-3" id="passwordInputRegister" placeholder="*********" required>
-                    <label for="confirmPasswordInput" class="form-label">Confirmation votre mot de passe : <span class="fw-bold">*</span></label>
+                    <label for="confirmPasswordInput" class="form-label">Confirmation votre mot de passe :</label>
                     <input type="password" class="form-control" id="confirmPasswordInputRegister" placeholder="*********" required>
                 </div>
                 <div class="mb-3" id="ageSectionRegister">
@@ -240,9 +240,6 @@
                 <div class="mb-4">
                     <label for="cityInput" class="form-label">Votre ville :</label>
                     <input type="text" class="form-control" id="cityInputRegister" placeholder="Lille">
-                </div>
-                <div class="d-flex justify-content-end mb-4">
-                    <p class="mb-0 fs-6 fst-italic">Les champs contenant : <span class="fw-bold">*</span> sont obligatoires pour votre inscription</p>
                 </div>
             </form>
             <div class="modal-footer">
@@ -271,9 +268,9 @@
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <p class="fs-4 fw-bold mb-2 w-50">LIENS ANNEXES</p>
                     <ul class="fs-5 ps-0 w-50 mb-0">
-                        <li><a href="#" class="text-white">Acceuil</a></li>
+                        <li><a href="index.html" class="text-white">Acceuil</a></li>
                         <li><a href="#" class="text-white">A propos</a></li>
-                        <li><a href="forum.html" class="text-white">Forum</a></li>
+                        <li><a href="#" class="text-white">Forum</a></li>
                     </ul>
                 </div>
             </div>
@@ -293,6 +290,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="main.js"></script>
     <script src="index.js"></script>
+    <script src="forum.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
